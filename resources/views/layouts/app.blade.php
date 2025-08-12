@@ -28,7 +28,7 @@
             @endisset
             @auth
     @if(auth()->user()->is_admin)
-        <a href="{{ route('admin.filmes.index') }}">Área Admin</a>
+        <a href="{{ route('admin.index') }}">Área Admin</a>
     @endif
     <a href="{{ route('filmes.galeria') }}">Galeria</a>
 @endauth
