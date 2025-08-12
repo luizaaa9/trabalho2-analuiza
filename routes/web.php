@@ -2,6 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsAdmin;
+use App\Http\Controllers\FilmeController;
+use App\Http\Controllers\AdminController;
+
+
+Route::aliasMiddleware('is_admin', IsAdmin::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,14 +25,16 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+
+
 Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
-    // Rotas de admin para filmes
     Route::get('/admin/filmes', [FilmeController::class, 'index'])->name('admin.filmes.index');
     Route::get('/admin/filmes/create', [FilmeController::class, 'create'])->name('admin.filmes.create');
     Route::post('/admin/filmes', [FilmeController::class, 'store'])->name('admin.filmes.store');
-    // etc.
+    
 });
 
 Route::get('/galeria', [FilmeController::class, 'galeria'])->name('filmes.galeria');
+

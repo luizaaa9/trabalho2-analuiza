@@ -3,7 +3,7 @@
 @section('conteudo')
 <h1>Administração de Filmes</h1>
 
-<a href="{{ route('admin.create') }}" class="btn btn-success mb-3">+ Adicionar Filme</a>
+<a href="{{ route('admin.filmes.create') }}" class="btn btn-success mb-3">+ Adicionar Filme</a>
 
 @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
