@@ -10,17 +10,18 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::create('filmes', function (Blueprint $table) {
-        $table->id();
-        $table->string('nome');
-        $table->text('sinopse');
-        $table->year('ano');
-        $table->string('categoria');
-        $table->string('imagem'); 
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('filmes', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome');
+            $table->text('sinopse');
+            $table->year('ano');
+            $table->string('categoria');
+            $table->string('imagem');
+            $table->string('trailer')->nullable();
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.

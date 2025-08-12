@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true
         ]);*/
         $this->call(UserSeeder::class);
+        $this->call(FilmeSeeder::class);
 
     }
     
