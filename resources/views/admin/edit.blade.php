@@ -3,7 +3,7 @@
 @section('conteudo')
 <h1>Editar Filme</h1>
 
-<form method="POST" action="{{ route('admin.update', $filme->id) }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('admin.filmes.update', $filme->id) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     @include('admin.partials.form', ['filme' => $filme])

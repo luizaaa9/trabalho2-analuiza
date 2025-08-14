@@ -17,6 +17,7 @@ return new class extends Migration
         $table->text('sinopse');
         $table->year('ano');
         $table->string('categoria');
+        $table->string('trailer')->nullable();
         $table->string('imagem'); 
         $table->timestamps();
     });

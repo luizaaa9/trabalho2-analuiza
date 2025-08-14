@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('conteudo')
-<h1>🎥 Galeria de Filmes</h1>
+<h1>Galeria de Filmes</h1>
 
 <form method="GET" class="row mb-4">
     <div class="col">

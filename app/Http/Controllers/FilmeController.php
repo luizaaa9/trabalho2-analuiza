@@ -30,10 +30,8 @@ class FilmeController extends Controller
             'ano' => 'required|digits:4',
             'categoria' => 'required',
             'imagem' => 'required|image',
-            'trailer' => 'required|url'
         ]);
     
-        // Salvar imagem
         $imagemPath = $request->file('imagem')->store('imagens', 'public');
         $dados['imagem'] = $imagemPath;
     
@@ -56,7 +54,6 @@ class FilmeController extends Controller
             'sinopse' => 'required',
             'ano' => 'required|digits:4',
             'categoria' => 'required',
-            'trailer' => 'required|url'
         ]);
     
         if ($request->hasFile('imagem')) {

@@ -20,11 +20,6 @@
 </div>
 
 <div class="mb-3">
-    <label>Trailer (URL do YouTube)</label>
-    <input type="url" name="trailer" class="form-control" value="{{ old('trailer', $filme->trailer ?? '') }}" required>
-</div>
-
-<div class="mb-3">
     <label>Imagem da Capa {{ isset($filme) ? '(Deixe em branco se não for alterar)' : '' }}</label>
     <input type="file" name="imagem" class="form-control" {{ isset($filme) ? '' : 'required' }}>
 </div>

@@ -25,8 +25,8 @@
             <td>{{ $filme->ano }}</td>
             <td>{{ $filme->categoria }}</td>
             <td>
-                <a href="{{ route('admin.edit', $filme->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                <form method="POST" action="{{ route('admin.destroy', $filme->id) }}" style="display:inline;">
+                <a href="{{ route('admin.filmes.edit', $filme->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                <form method="POST" action="{{ route('admin.filmes.destroy', $filme->id) }}" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger btn-sm">Excluir</button>

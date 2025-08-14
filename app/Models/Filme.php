@@ -11,6 +11,6 @@ class Filme extends Model
         'sinopse',
         'ano',
         'categoria',
-        'imagem',
+        'imagem'
     ];
 }

@@ -7,5 +7,4 @@
 <p><strong>Categoria:</strong> {{ $filme->categoria }}</p>
 <p><strong>Sinopse:</strong> {{ $filme->sinopse }}</p>
 
-<a href="{{ $filme->trailer }}" target="_blank" class="btn btn-danger">🎬 Ver Trailer</a>
 @endsection
