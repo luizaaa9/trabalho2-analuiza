@@ -6,7 +6,6 @@ use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\FilmeController;
 use App\Http\Controllers\AdminController;
 
-
 Route::aliasMiddleware('is_admin', IsAdmin::class);
 
 Route::get('/', function () {
@@ -25,16 +24,18 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index');
 
-
-Route::middleware(['auth', 'is_admin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-
-    Route::get('/admin/filmes', [FilmeController::class, 'index'])->name('admin.filmes.index');
-    Route::get('/admin/filmes/create', [FilmeController::class, 'create'])->name('admin.filmes.create');
-    Route::post('/admin/filmes', [FilmeController::class, 'store'])->name('admin.filmes.store');
-    
+    Route::get('/filmes', [FilmeController::class, 'index'])->name('filmes.index');
+    Route::get('/filmes/create', [FilmeController::class, 'create'])->name('filmes.create');
+    Route::post('/filmes', [FilmeController::class, 'store'])->name('filmes.store');
+    Route::get('/filmes/{filme}/edit', [FilmeController::class, 'edit'])->name('filmes.edit');
+    Route::put('/filmes/{filme}', [FilmeController::class, 'update'])->name('filmes.update');
+    Route::delete('/filmes/{filme}', [FilmeController::class, 'destroy'])->name('filmes.destroy');
 });
 
 Route::get('/galeria', [FilmeController::class, 'galeria'])->name('filmes.galeria');
 
+
+Route::get('/filmes/{id}', [FilmeController::class, 'detalhes'])->name('filmes.detalhes');
