@@ -2,46 +2,37 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="mb-4">Dashboard Admin</h1>
+
+    <h1 class="mb-4 text-center">🎬 Dashboard Admin</h1>
 
     @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+        <div class="alert alert-success text-center">
+            {{ session('success') }}
+        </div>
     @endif
 
-    <div class="mb-3">
-        <a href="{{ route('admin.filmes.create') }}" class="btn btn-primary">Adicionar Novo Filme</a>
+    <div class="d-flex justify-content-end mb-4">
+        <a href="{{ route('admin.filmes.create') }}" class="btn btn-success btn-lg">
+            + Adicionar Novo Filme
+        </a>
     </div>
 
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>Ano</th>
-                <th>Categoria</th>
-                <th>Imagem</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($filmes as $filme)
-            <tr>
-                <td>{{ $filme->id }}</td>
-                <td>{{ $filme->nome }}</td>
-                <td>{{ $filme->ano }}</td>
-                <td>{{ $filme->categoria }}</td>
-                <td><img src="{{ $filme->imagem }}" alt="{{ $filme->nome }}" style="width: 100px;"></td>
-                <td>
-                    <a href="{{ route('admin.filmes.edit', $filme->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                    <form method="POST" action="{{ route('admin.filmes.destroy', $filme->id) }}" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger btn-sm">Excluir</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-@endsection
+    <div class="row">
+        @forelse($filmes as $filme)
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="{{ asset('storage/' . $filme->imagem) }}" class="card-img-top" style="height: 250px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ $filme->nome }}</h5>
+                        <p class="text-muted mb-2">{{ $filme->ano }} - {{ $filme->categoria }}</p>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <a href="{{ route('admin.filmes.edit', $filme->id) }}" class="btn btn-warning btn-sm">✏ Editar</a>
+                            <form method="POST" action="{{ route('admin.filmes.destroy', $filme->id) }}" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir este filme?')">
+                                    🗑 Excluir
+                                </button>
+                            </form>
+                        </div>
+                    </div>
