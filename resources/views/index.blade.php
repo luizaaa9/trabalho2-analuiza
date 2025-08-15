@@ -3,7 +3,7 @@
 @section('conteudo')
 <div class="container mt-4">
 
-    <h1 class="mb-4 text-center">🎬 Administração de Filmes</h1>
+    <h1 class="mb-4 text-center">Administração de Filmes</h1>
 
     <div class="d-flex justify-content-end mb-3">
         <a href="{{ route('admin.create') }}" class="btn btn-success btn-lg">

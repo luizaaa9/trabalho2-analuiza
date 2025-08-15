@@ -29,7 +29,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark p-3 shadow-sm">
         <div class="container">
-            <a href="/" class="navbar-brand">🎬 Galeria</a>
+            <a href="/" class="navbar-brand"> Galeria</a>
             <a href="/admin" class="btn btn-outline-light">Admin</a>
         </div>
     </nav>

@@ -12,10 +12,11 @@ class FilmeController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $filmes = Filme::all();
-        return view('admin.index', compact('filmes'));
-    }
+{
+    $filmes = Filme::all();
+    return view('admin.index', compact('filmes'));
+}
+
     
     public function create()
     {
@@ -69,8 +70,9 @@ class FilmeController extends Controller
     {
         $filme = Filme::findOrFail($id);
         $filme->delete();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.dashboard')->with('success', 'Filme excluído com sucesso!');
     }
+    
     
 
     public function galeria(Request $request)

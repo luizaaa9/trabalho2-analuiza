@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function index()
-    {
-        $filmes = Filme::all();
-        return view('admin.index', compact('filmes'));
-    }
+{
+    $filmes = Filme::all();
+    return view('admin.index', compact('filmes'));
+}
+
 
     public function create()
     {
@@ -56,10 +57,10 @@ class AdminController extends Controller
     }
 
     public function destroy($id)
-    {
-        $filme = Filme::findOrFail($id);
-        $filme->delete();
+{
+    $filme = Filme::findOrFail($id);
+    $filme->delete();
+    return redirect()->route('admin.dashboard')->with('success', 'Filme excluído com sucesso!');
+}
 
-        return redirect()->route('admin.filmes.index')->with('success', 'Filme excluído com sucesso!');
-    }
 }

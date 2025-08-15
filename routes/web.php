@@ -12,6 +12,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -33,6 +36,7 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(
     Route::get('/filmes/{filme}/edit', [FilmeController::class, 'edit'])->name('filmes.edit');
     Route::put('/filmes/{filme}', [FilmeController::class, 'update'])->name('filmes.update');
     Route::delete('/filmes/{filme}', [FilmeController::class, 'destroy'])->name('filmes.destroy');
+    
 });
 
 Route::get('/galeria', [FilmeController::class, 'galeria'])->name('filmes.galeria');
